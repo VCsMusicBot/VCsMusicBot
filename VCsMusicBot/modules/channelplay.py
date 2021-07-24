@@ -97,22 +97,22 @@ def updated_stats(chat, queue, vol=100):
 
 
 def r_ply(type_):
-    if type_ == "play":
+    if type_ == "تشغيل":
         pass
     else:
         pass
     mar = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("⏹", "cleave"),
-                InlineKeyboardButton("⏸", "cpuse"),
-                InlineKeyboardButton("▶️", "cresume"),
-                InlineKeyboardButton("⏭", "cskip"),
+                InlineKeyboardButton("⏹", "ايقاف"),
+                InlineKeyboardButton("⏸", "تشغيل"),
+                InlineKeyboardButton("▶️", "استمر"),
+                InlineKeyboardButton("⏭", "تخطي"),
             ],
             [
                 InlineKeyboardButton("Playlist 📖", "cplaylist"),
             ],
-            [InlineKeyboardButton("❌ Close", "ccls")],
+            [InlineKeyboardButton("❌ خروج", "ccls")],
         ]
     )
     return mar
@@ -295,15 +295,15 @@ async def m_cb(b, cb):
         marr = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("⏹", "cleave"),
-                    InlineKeyboardButton("⏸", "cpuse"),
-                    InlineKeyboardButton("▶️", "cresume"),
-                    InlineKeyboardButton("⏭", "cskip"),
+                    InlineKeyboardButton("⏹", "ايقاف"),
+                    InlineKeyboardButton("⏸", "تشغيل"),
+                    InlineKeyboardButton("▶️", "استمر"),
+                    InlineKeyboardButton("⏭", "تخطي"),
                 ],
                 [
                     InlineKeyboardButton("Playlist 📖", "cplaylist"),
                 ],
-                [InlineKeyboardButton("❌ Close", "ccls")],
+                [InlineKeyboardButton("❌ خروج", "ccls")],
             ]
         )
         await cb.message.edit(stats, reply_markup=marr)
@@ -322,7 +322,7 @@ async def m_cb(b, cb):
                 await callsmusic.set_stream(
                     chet_id, queues.get(chet_id)["file"]
                 )
-                await cb.answer.reply_text("✅ <b>Skipped</b>")
+                await cb.answer.reply_text("✅ <b>تم التخطي</b>")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
                     f"- Skipped track\n- Now Playing **{qeue[0][0]}**"
@@ -345,7 +345,7 @@ async def m_cb(b, cb):
 @authorized_users_only
 async def play(_, message: Message):
     global que
-    lel = await message.reply("🔄 <b>Processing</b>")
+    lel = await message.reply("🔄 <b>جاري المعالجه</b>")
 
     try:
       conchat = await _.get_chat(message.chat.id)
@@ -396,7 +396,7 @@ async def play(_, message: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your channel due to heavy requests for userbot! Make sure user is not banned in group."
+                        f"<b>🔴 خطاء اعد المحاوله لاحقا 🔴 \nUser {user.first_name} couldn't join your channel due to heavy requests for userbot! Make sure user is not banned in group."
                         "\n\nOr manually add assistant to your Group and try again</b>",
                     )
     try:
@@ -410,7 +410,7 @@ async def play(_, message: Message):
     message.from_user.id
     text_links = None
     message.from_user.first_name
-    await lel.edit("🔎 <b>Finding</b>")
+    await lel.edit("🔎 <b>جاري البحث</b>")
     message.from_user.id
     user_id = message.from_user.id
     message.from_user.first_name
@@ -448,15 +448,15 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📖 Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Menu ⏯ ", callback_data="cmenu"),
+                    InlineKeyboardButton("📖 القائمه", callback_data="cplaylist"),
+                    InlineKeyboardButton("قائمه التشغيل ⏯ ", callback_data="cmenu"),
                 ],
-                [InlineKeyboardButton(text="❌ Close", callback_data="ccls")],
+                [InlineKeyboardButton(text="❌ خروج", callback_data="ccls")],
             ]
         )
         file_name = get_file_name(audio)
         title = file_name
-        thumb_name = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
+        thumb_name = "https://telegra.ph/file/384581a40a114fceba29b.jpg"
         thumbnail = thumb_name
         duration = round(audio.duration / 60)
         views = "Locally added"
@@ -469,7 +469,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 **Processing**")
+        await lel.edit("🎵 **جار البحث**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -505,14 +505,14 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📖 Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Menu ⏯ ", callback_data="cmenu"),
+                    InlineKeyboardButton("📖 القائمه", callback_data="cplaylist"),
+                    InlineKeyboardButton("قائمه التشغيل ⏯ ", callback_data="cmenu"),
                 ],
                 [
-                    InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                    InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                    InlineKeyboardButton(text="🎬 يوتيوب", url=f"{url}"),
+                    InlineKeyboardButton(text="تحميل 📥", url=f"{dlurl}"),
                 ],
-                [InlineKeyboardButton(text="❌ Close", callback_data="ccls")],
+                [InlineKeyboardButton(text="❌ خروج", callback_data="ccls")],
             ]
         )
         requested_by = message.from_user.first_name
@@ -523,7 +523,7 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **Processing**")
+        await lel.edit("🎵 **جاري البحث**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -559,14 +559,14 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("📖 Playlist", callback_data="cplaylist"),
-                    InlineKeyboardButton("Menu ⏯ ", callback_data="cmenu"),
+                    InlineKeyboardButton("📖 القائمه", callback_data="cplaylist"),
+                    InlineKeyboardButton("قائمه التشغيل ⏯ ", callback_data="cmenu"),
                 ],
                 [
-                    InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
-                    InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                    InlineKeyboardButton(text="🎬 يوتيوب", url=f"{url}"),
+                    InlineKeyboardButton(text="تحميل 📥", url=f"{dlurl}"),
                 ],
-                [InlineKeyboardButton(text="❌ Close", callback_data="ccls")],
+                [InlineKeyboardButton(text="❌ خروج", callback_data="ccls")],
             ]
         )
         requested_by = message.from_user.first_name
@@ -697,11 +697,11 @@ async def deezer(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="cmenu"),
+                InlineKeyboardButton("📖 القائمه", callback_data="cplaylist"),
+                InlineKeyboardButton("قائمه التشغيل ⏯ ", callback_data="cmenu"),
             ],
             [InlineKeyboardButton(text="Listen On Deezer 🎬", url=f"{url}")],
-            [InlineKeyboardButton(text="❌ Close", callback_data="ccls")],
+            [InlineKeyboardButton(text="❌ خروج", callback_data="ccls")],
         ]
     )
     file_path = await convert(wget.download(url))
@@ -719,7 +719,7 @@ async def deezer(client: Client, message_: Message):
         qeue.append(appendable)
         await res.edit_text(f"✯{bn}✯= #️⃣ Queued at position {position}")
     else:
-        await res.edit_text(f"✯{bn}✯=▶️ Playing.....")
+        await res.edit_text(f"✯{bn}✯=▶️ جاري التشغيل.....")
 
         que[chat_id] = []
         qeue = que.get(chat_id)
@@ -744,7 +744,7 @@ async def deezer(client: Client, message_: Message):
 @authorized_users_only
 async def jiosaavn(client: Client, message_: Message):
     global que
-    lel = await message_.reply("🔄 **Processing**")
+    lel = await message_.reply("🔄 **جاري البحث**")
     try:
       conchat = await client.get_chat(message_.chat.id)
       conid = conchat.linked_chat.id
@@ -809,7 +809,7 @@ async def jiosaavn(client: Client, message_: Message):
     text = message_.text.split(" ", 1)
     query = text[1]
     res = lel
-    await res.edit(f"Searching 🔎 for `{query}` on jio saavn")
+    await res.edit(f"يتم البحث الان 🔎 for `{query}` on jio saavn")
     try:
         songs = await arq.saavn(query)
         if not songs.ok:
@@ -827,15 +827,15 @@ async def jiosaavn(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📖 Playlist", callback_data="cplaylist"),
-                InlineKeyboardButton("Menu ⏯ ", callback_data="cmenu"),
+                InlineKeyboardButton("📖 القائمه", callback_data="cplaylist"),
+                InlineKeyboardButton("قائمه التشغيل ⏯ ", callback_data="cmenu"),
             ],
             [
                 InlineKeyboardButton(
                     text="Join Updates Channel", url=f"https://t.me/{updateschannel}"
                 )
             ],
-            [InlineKeyboardButton(text="❌ Close", callback_data="ccls")],
+            [InlineKeyboardButton(text="❌ خروج", callback_data="ccls")],
         ]
     )
     file_path = await convert(wget.download(slink))
@@ -857,7 +857,7 @@ async def jiosaavn(client: Client, message_: Message):
         )
 
     else:
-        await res.edit_text(f"{bn}=▶️ Playing.....")
+        await res.edit_text(f"{bn}=▶️ جاري التشغيل.....")
         que[chat_id] = []
         qeue = que.get(chat_id)
         s_name = sname
