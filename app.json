@@ -1,9 +1,9 @@
 {
   "name": "Music Player Bot",
   "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
-  "logo": "https://telegra.ph/file/58b49a246c25c8aa2f613.jpg",
+  "logo": "https://telegra.ph/file/384581a40a114fceba29b.jpg",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/ZauteKm/MusicBot",
+  "repository": "https://github.com/VCsMusicBot/VCsMusicBot",
   "stack": "container",
   "env": {
     "SESSION_NAME": {
