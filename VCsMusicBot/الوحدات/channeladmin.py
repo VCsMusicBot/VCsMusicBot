@@ -29,7 +29,7 @@ async def pause(_, message: Message):
     if (chat_id not in callsmusic.active_chats) or (
         callsmusic.active_chats[chat_id] == "paused"
     ):
-        await message.reply_text("❗ Nothing is playing!")
+        await message.reply_text("❗ اعد المحاوله!")
     else:
         callsmusic.pause(chat_id)
         await message.reply_text("▶️ Paused!")
@@ -50,7 +50,7 @@ async def resume(_, message: Message):
     if (chat_id not in callsmusic.active_chats) or (
         callsmusic.active_chats[chat_id] == "playing"
     ):
-        await message.reply_text("❗ Nothing is paused!")
+        await message.reply_text("❗ اعد المحاوله!")
     else:
         callsmusic.resume(chat_id)
         await message.reply_text("⏸ Resumed!")
@@ -69,7 +69,7 @@ async def stop(_, message: Message):
       return    
     chat_id = chid
     if chat_id not in callsmusic.active_chats:
-        await message.reply_text("❗ Nothing is streaming!")
+        await message.reply_text("❗ اعد المحاوله!")
     else:
         try:
             queues.clear(chat_id)
@@ -77,7 +77,7 @@ async def stop(_, message: Message):
             pass
 
         await callsmusic.stop(chat_id)
-        await message.reply_text("❌ Stopped streaming!")
+        await message.reply_text("❌ توقف التشغيل!")
 
 
 @Client.on_message(filters.command(["channelskip","cskip"]) & filters.group & ~filters.edited)
@@ -94,7 +94,7 @@ async def skip(_, message: Message):
       return    
     chat_id = chid
     if chat_id not in callsmusic.active_chats:
-        await message.reply_text("❗ Nothing is playing to skip!")
+        await message.reply_text("❗ لا يوجد شي للتخطي!")
     else:
         queues.task_done(chat_id)
 
