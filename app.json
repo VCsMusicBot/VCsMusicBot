@@ -1,72 +1,34 @@
 {
-  "name": "VCsMusicBot",
-  "logo": "https://telegra.ph/file/384581a40a114fceba29b.jpg",
+  "name": "Music Player Bot",
   "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
+  "logo": "https://telegra.ph/file/58b49a246c25c8aa2f613.jpg",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/VCsMusicBot/VCsMusicBot",
+  "repository": "https://github.com/ZauteKm/MusicBot",
   "stack": "container",
   "env": {
-    "كود نيم": {
+    "SESSION_NAME": {
       "description": "Pyrogram session string",
       "required": true
     },
-    "توكن البوت": {
+    "BOT_TOKEN": {
       "description": "A bot token from @BotFather",
       "required": true
     },
-    "معرف البوت": {
-      "description": "Your bot's username without @",
-      "required": true
-    },
-    "اسم البوت": {
+    "BOT_NAME": {
       "description": "Your MusicPlayer Bot Name.",
       "required": false,
-      "value": ""
+      "value": "Group Music Bot"
     },
-    "SUPPORT_GROUP": {
-      "description": "Your MusicPlayer support group without @ [Leave this if you don't have one]",
-      "required": false,
-      "value": "tgVCSets"
-    },
-    "PROJECT_NAME": {
-      "description": "Your MusicPlayer project Name.",
-      "required": false,
-      "value": "VCsMusicBot"
-    },
-    "ASSISTANT_NAME": {
-      "description": "Your MusicPlayer's assistant Username without @.",
-      "required": true
-    },
-    "ARQ_API_KEY": {
-      "description": "Get from @ARQRobot.",
-      "required": false,
-      "value": "GUGFNB-XPUZDX-XGCKTJ-UZXHBZ-ARQ"
-    },    
-    "صوره معينه": {
-      "description": "BG image of bot (Use transparent one) [IGNORE].",
-      "required": false,
-      "value": "https://telegra.ph/file/384581a40a114fceba29b.jpg"
-    },     
-    "UPDATES_CHANNEL": {
-      "description": "Updates Channel without @ [Leave this if you don't have one].",
-      "required": false,
-      "value": "ZauteKm"
-    },    
     "API_ID": {
       "description": "App ID from my.telegram.org/apps",
       "required": true
     },
-    "PMPERMIT": {
-      "description": "Change to turn off",
-      "required": false,
-      "value": "ENABLE"
-    },    
-    "اب هاش": {
+    "API_HASH": {
       "description": "App hash from my.telegram.org/apps",
       "required": true
     },
     "SUDO_USERS": {
-      "description": "List of user IDs counted as admin everywhere (separated by space).",
+      "description": "List of user IDs counted as admin everywhere (separated by space). Get from @DingdiBot",
       "required": true
     },
     "DURATION_LIMIT": {
