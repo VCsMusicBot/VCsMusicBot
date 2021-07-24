@@ -3,22 +3,22 @@
   "logo": "https://telegra.ph/file/384581a40a114fceba29b.jpg",
   "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/LushaiMusic/VCsMusicBot",
+  "repository": "https://github.com/VCsMusicBot/VCsMusicBot",
   "stack": "container",
   "env": {
-    "SESSION_NAME": {
+    "كود نيم": {
       "description": "Pyrogram session string",
       "required": true
     },
-    "BOT_TOKEN": {
+    "توكن البوت": {
       "description": "A bot token from @BotFather",
       "required": true
     },
-    "BOT_USERNAME": {
+    "معرف البوت": {
       "description": "Your bot's username without @",
       "required": true
     },
-    "BOT_NAME": {
+    "اسم البوت": {
       "description": "Your MusicPlayer Bot Name.",
       "required": false,
       "value": ""
@@ -42,10 +42,10 @@
       "required": false,
       "value": "GUGFNB-XPUZDX-XGCKTJ-UZXHBZ-ARQ"
     },    
-    "BG_IMAGE": {
+    "صوره معينه": {
       "description": "BG image of bot (Use transparent one) [IGNORE].",
       "required": false,
-      "value": "https://telegra.ph/file/cf19dda907391656338eb.png"
+      "value": "https://telegra.ph/file/384581a40a114fceba29b.jpg"
     },     
     "UPDATES_CHANNEL": {
       "description": "Updates Channel without @ [Leave this if you don't have one].",
@@ -61,7 +61,7 @@
       "required": false,
       "value": "ENABLE"
     },    
-    "API_HASH": {
+    "اب هاش": {
       "description": "App hash from my.telegram.org/apps",
       "required": true
     },
