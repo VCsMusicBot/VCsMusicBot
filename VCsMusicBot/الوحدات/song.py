@@ -22,7 +22,7 @@ from VCsMusicBot.config import DURATION_LIMIT
 from VCsMusicBot.modules.play import arq
 
 
-@Client.on_message(filters.command("song") & ~filters.channel)
+@Client.on_message(filters.command("بحث") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
@@ -33,7 +33,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 Finding the song...")
+    m = message.reply("🔎 جار البحث عن الاغنيه...")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -50,7 +50,7 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("❌ Found Nothing.\n\nTry another keywork or maybe spell it properly.")
+        m.edit("❌ لم يتم العثور على شيء.\n\nTry another keywork or maybe spell it properly.")
         print(str(e))
         return
     m.edit("Downloading the song ")
@@ -74,7 +74,7 @@ def song(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ Error")
+        m.edit("❌ هذا خطاء")
         print(e)
 
     try:
