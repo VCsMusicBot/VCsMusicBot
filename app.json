@@ -1,40 +1,84 @@
 {
-  "name": "Music Player Bot",
-  "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
-  "logo": "https://telegra.ph/file/384581a40a114fceba29b.jpg",
-  "keywords": ["music", "voicechat", "telegram"],
+  "name": "Telegram Voice Chat Music Player Bot ",
+  "description": "Telegram Bot to Play Audio in Telegram Voice Chats",
   "repository": "https://github.com/VCsMusicBot/VCsMusicBot",
-  "stack": "container",
+  "keywords": [
+    "telegram",
+    "bot",
+    "voicechat",
+    "music",
+    "python",
+    "pyrogram",
+    "pytgcalls",
+    "tgcalls",
+    "voip"
+  ],
   "env": {
-    "SESSION_NAME": {
-      "description": "Pyrogram session string",
-      "required": true
-    },
-    "BOT_TOKEN": {
-      "description": "A bot token from @BotFather",
-      "required": true
-    },
-    "BOT_NAME": {
-      "description": "Your MusicPlayer Bot Name.",
-      "required": false,
-      "value": "Group Music Bot"
-    },
     "API_ID": {
-      "description": "App ID from my.telegram.org/apps",
+      "description": "api_id part of your Telegram API Key from my.telegram.org/apps",
       "required": true
     },
     "API_HASH": {
-      "description": "App hash from my.telegram.org/apps",
+      "description": "api_hash part of your Telegram API Key from my.telegram.org/apps",
       "required": true
     },
-    "SUDO_USERS": {
-      "description": "List of user IDs counted as admin everywhere (separated by space). Get from @DingdiBot",
+    "BOT_TOKEN": {
+      "description": "Bot token of Bot, get from @Botfather",
       "required": true
     },
-    "DURATION_LIMIT": {
-      "description": "Max audio duration limit for downloads (minutes).",
-      "required": true,
-      "value": "10"
+    "ARQ_API": {
+      "description": "get it for free from @ARQRobot",
+      "required": false
+    },
+    "SESSION_STRING": {
+      "description": "Session string, read the README to learn how to export it with Pyrogram",
+      "required": true
+    },
+    "CHAT": {
+      "description": "ID of Channel or Group where the Bot plays Music",
+      "required": true
+    },
+    "LOG_GROUP": {
+      "description": "ID of the group to send playlist If CHAT is a Group, if channel thenleave blank",
+      "required": false
+    },
+    "ADMINS": {
+      "description": "ID of Users who can use Admin commands(for multiple users seperated by space)",
+      "required": true
+    },
+    "ADMIN_ONLY": {
+      "description": "Change it to 'N' if you want to make /play and /dplay available for everyone. By default only admins of CHAT can use it.",
+      "value": "Y",
+      "required": false
+    },
+    "MAXIMUM_DURATION": {
+      "description": "Maximum duration of song to be played using /play or /dplay",
+      "value": "15",
+      "required": false
+    },
+    "STREAM_URL": {
+      "description": "URL of Radio station or Youtube live video url to stream with /radio command",
+      "value": "https://youtu.be/zcrUCvBD16k",
+      "required": false
+    },
+    "REPLY_MESSAGE": {
+      "description": "A reply message to those who message the USER account in PM. Make it blank if you do not need this feature.",
+      "value": "Helo Ser, Iam a bot to play music, not havimg time to chat with you.",
+      "required": false
     }
-  }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
 }
